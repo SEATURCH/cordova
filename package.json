@@ -18,14 +18,15 @@
   "dependencies": {
     "cordova-android": "~6.2.3",
     "cordova-ios": "^4.5.4",
-    "cordova-plugin-compat": "^1.0.0",
+    "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-file": "^4.3.3",
-    "cordova-plugin-whitelist": "1",
+    "cordova-plugin-whitelist": "^1.3.3",
     "knockout": "^3.4.2",
     "newman-eansupplemental": "^4.0.2",
     "phonegap-plugin-barcodescanner": "^6.0.8"
   },
   "devDependencies": {
+    "cordova": "^7.1.0",
     "knockout-mapping": "^2.6.0",
     "webpack": "^4.16.1",
     "webpack-cli": "^3.0.8"
@@ -33,8 +34,9 @@
   "scripts": {
     "runAND": "webpack --mode development | cordova run android",
     "emAND": "webpack --mode development | cordova emulate android",
-    "runIOS": "webpack --mode development | taco run ios",
-    "emIOS": "webpack --mode development | taco emulate ios",
+    "runIOS": "webpack --mode development | cordova run ios",
+    "emIOS": "webpack --mode development | cordova emulate ios",
+    "refresh": "cordova platform remove ios | cordova platform add ios",
     "bundle": "webpack --mode development"
   }
 }
