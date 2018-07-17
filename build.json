@@ -1,0 +1,14 @@
+{
+  "ios": {
+    "debug": {
+      "codeSignIdentity": "iPhone Developer",
+      "provisioningProfile": "0ee81776-a30b-43b6-abbc-9a0e6ef2b7d1",
+      "developmentTeam": "FG35JLLMXX4A"
+    },
+    "release": {
+      "codeSignIdentity": "iPhone Distribution",
+      "developmentTeam": "FG35JLLMXX4A",
+      "provisioningProfile": "0ee81776-a30b-43b6-abbc-9a0e6ef2b7d1"
+    }
+  }
+}
