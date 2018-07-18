@@ -3,3 +3,4 @@ platforms/
 plugins/
 remote/
 www/bundle.js
+package-lock.json

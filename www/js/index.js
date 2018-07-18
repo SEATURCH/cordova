@@ -4,6 +4,7 @@ require('../css/tabs.scss');
 var ko =  require('knockout');
 var Swipe = require('swipejs');
 var listFuns =  require('./listFuns');
+var opennwith = require('./openwith');
 
 var viewmodel = new function() {
     var self = this;
@@ -46,6 +47,8 @@ var app = {
         ko.applyBindings(viewmodel);
 
         var element = document.getElementById('slider');
+        opennwith.setupOpenwith();
+
         window.mySwipe = new Swipe(element, {
           startSlide: 0,
           speed:150,
@@ -63,3 +66,8 @@ var app = {
 };
 
 app.initialize();
+
+
+// cordova plugin add cc.fovea.cordova.openwith --variable ANDROID_MIME_TYPE="application/vnd.ms-excel" --variable IOS_URL_SCHEME=ccfoveaopenwithdemo  --variable IOS_UNIFORM_TYPE_IDENTIFIER=com.microsoft.excel.xls
+// cordova plugin add cc.fovea.cordova.openwith --variable ANDROID_MIME_TYPE="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" --variable IOS_URL_SCHEME=ccfoveaopenwithdemo  --variable IOS_UNIFORM_TYPE_IDENTIFIER=com.microsoft.excel.xls
+
