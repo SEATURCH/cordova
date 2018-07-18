@@ -1,22 +1,4 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
         <!--
@@ -33,18 +15,40 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
-
     </head>
     <body>
         <script type="text/javascript" src="./bundle.js"></script>
 
         <div class="app">
-             <button data-toggle="tooltip" title="Download List" data-bind="click:scanItem">
-                Import
-            </button>
+            <div id="slider" class="swipe">
+              <div class="swipe-wrap">
+                <div>
+                    <h1>Imported</h1>
+                    <input id="ImportFile" type="file" data-bind="event: { change: parseXlsx }" />
+                    <div class="list" data-bind="foreach: importedList">
+                        <h3 data-bind="text:$data"></h3>
+                    </div>
+                </div>
+                <div>
+                    <h1>Scanned</h1>
+                    <button data-toggle="tooltip" title="Download List" data-bind="click:scanItem">
+                        Scan
+                    </button>
+                    <div class="list" data-bind="foreach: scannedList">
+                        <h3 data-bind="text:$data"></h3>
+                    </div>
+                </div>
+                <div>
+                    <h1>Diff</h1>
+                    <div class="list" data-bind="foreach: diffList">
+                        <h3 data-bind="text:$data"></h3>
+                    </div>
+                </div>
+              </div>
+            </div>
 
-            <input id="ImportFile" type="file" data-bind="event: { change: parseXlsx }" />
-
+             
+            
 
 
         </div>

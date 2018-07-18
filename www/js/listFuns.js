@@ -28,6 +28,7 @@ module.exports = {
 			cordova.plugins.barcodeScanner.scan(
 		      function (result) {
 		          alert("Barcode: " + result.text + "\n");
+		          viewmodel.scannedList.push(result.text);
 		      },
 		      function (error) {
 		          alert("Scanning failed: " + error);
