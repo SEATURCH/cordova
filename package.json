@@ -4,8 +4,8 @@
   "displayName": "HelloWorld",
   "cordova": {
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ],
     "plugins": {
       "cordova-plugin-whitelist": {},
@@ -14,15 +14,14 @@
         "CAMERA_USAGE_DESCRIPTION": " "
       },
       "cc.fovea.cordova.openwith": {
-        "ANDROID_MIME_TYPE": "application/vnd.ms-excel",
+        "ANDROID_MIME_TYPE": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         "IOS_URL_SCHEME": "ccfoveaopenwithdemo",
         "IOS_UNIFORM_TYPE_IDENTIFIER": "com.microsoft.excel.xls"
       }
     }
   },
   "dependencies": {
-    "cc.fovea.cordova.openwith": "^1.1.1",
-    "cordova-android": "^6.2.3",
+    "cordova-android": "^6.3.0",
     "cordova-ios": "^4.5.4",
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-file": "^4.3.3",

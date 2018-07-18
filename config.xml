@@ -28,9 +28,9 @@
     <plugin name="phonegap-plugin-barcodescanner" spec="^6.0.8">
         <variable name="CAMERA_USAGE_DESCRIPTION" value=" " />
     </plugin>
-    <engine name="android" spec="~6.2.3" />
-    <plugin name="cc.fovea.cordova.openwith" spec="^1.1.1">
-        <variable name="ANDROID_MIME_TYPE" value="application/vnd.ms-excel" />
+    <engine name="android" spec="~6.3.0" />
+    <plugin name="cc.fovea.cordova.openwith" spec="~1.0.0">
+        <variable name="ANDROID_MIME_TYPE" value="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
         <variable name="IOS_URL_SCHEME" value="ccfoveaopenwithdemo" />
         <variable name="IOS_UNIFORM_TYPE_IDENTIFIER" value="com.microsoft.excel.xls" />
     </plugin>
