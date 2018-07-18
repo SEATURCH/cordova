@@ -21,6 +21,7 @@
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-file": "^4.3.3",
     "cordova-plugin-whitelist": "^1.3.3",
+    "jquery": "^3.3.1",
     "knockout": "^3.4.2",
     "newman-eansupplemental": "^4.0.2",
     "phonegap-plugin-barcodescanner": "^6.0.8"
@@ -32,11 +33,11 @@
     "webpack-cli": "^3.0.8"
   },
   "scripts": {
-    "runAND": "webpack --mode development | cordova run android",
-    "emAND": "webpack --mode development | cordova emulate android",
-    "runIOS": "webpack --mode development | cordova run ios",
-    "emIOS": "webpack --mode development | cordova emulate ios",
-    "refresh": "cordova platform remove ios | cordova platform add ios",
+    "runAND": "webpack --mode development && cordova run android",
+    "emAND": "webpack --mode development && cordova emulate android",
+    "runIOS": "webpack --mode development && cordova run ios",
+    "emIOS": "webpack --mode development && cordova emulate ios",
+    "refresh": "cordova platform remove ios && cordova platform add ios",
     "bundle": "webpack --mode development"
   }
 }

@@ -20,12 +20,19 @@
 var ko =  require('knockout');
 var listFuns =  require('./listFuns');
 
-var viewModel = {
-    importedList:   [],
-    scannedList:    [],
-    diffList:       []
-}
+var viewmodel = new function() {
+    var self = this;
 
+    self.importedList = ko.observableArray([]);
+    self.scannedList = ko.observableArray([]);
+    self.diffList = ko.computed( function(){
+        return self.importedList().filter(function(item){
+            return self.scannedList.indexOf(item) == -1 ;
+        });
+    });
+};
+
+window.viewModel = viewmodel;
 var app = {
     // Application Constructor
     initialize: function() {
@@ -50,8 +57,8 @@ var app = {
         // receivedElement.setAttribute('style', 'display:block;');
         var intiPage = 'Start';
         // Entrypoint for weback, used mainly to include konckout from npm wihtout having to donwload specifically
-        listFuns.bind(viewModel);
-        ko.applyBindings(viewModel);
+        listFuns.bind(viewmodel);
+        ko.applyBindings(viewmodel);
 
         console.log('Received Event: ' + id);
     }
