@@ -14,7 +14,7 @@
         "CAMERA_USAGE_DESCRIPTION": " "
       },
       "cc.fovea.cordova.openwith": {
-        "ANDROID_MIME_TYPE": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "ANDROID_MIME_TYPE": "application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel.sheet.macroEnabled.12",
         "IOS_URL_SCHEME": "ccfoveaopenwithdemo",
         "IOS_UNIFORM_TYPE_IDENTIFIER": "com.microsoft.excel.xls"
       }
