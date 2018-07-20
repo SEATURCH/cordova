@@ -1,10 +1,10 @@
 // Entrypoint for weback, include main knockout binding and all scss
 require('../css/tabs.scss');
+require('./_custom-bindings');
 
 var ko =  require('knockout');
-var Swipe = require('swipejs');
-var listFuns =  require('./listFuns');
-var opennwith = require('./openwith');
+var ioIds =  require('./ioIds');
+var email =  require('./email');
 
 var viewmodel = new function() {
     var self = this;
@@ -16,6 +16,8 @@ var viewmodel = new function() {
             return self.scannedList.indexOf(item) == -1 ;
         });
     });
+
+    self.diffFiles = ko.observableArray([]);
 };
 
 window.viewModel = viewmodel;
@@ -32,35 +34,26 @@ var app = {
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
     },
-
+    neededPermissions: [],
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        // var parentElement = document.getElementById(id);
-        // var listeningElement = parentElement.querySelector('.listening');
-        // var receivedElement = parentElement.querySelector('.received');
-
-        // listeningElement.setAttribute('style', 'display:none;');
-        // receivedElement.setAttribute('style', 'display:block;');
+        // permissions
+        var permissions = cordova.plugins.permissions;
+        permissions.checkPermission(permissions.READ_EXTERNAL_STORAGE, function(){}, function(d){
+            permissions.requestPermission(permissions.READ_EXTERNAL_STORAGE, function(){}, function(d){ console.log("Could not request storage permissions") });
+        });
         var intiPage = 'Start';
         // Entrypoint for weback, used mainly to include konckout from npm wihtout having to donwload specifically
-        listFuns.bind(viewmodel);
+        
+        ioIds.listFromOpenInit(viewmodel);
+        ioIds.getDiffFiles(viewModel);
+        ioIds.bind(viewmodel);
+        
+        viewModel.selectEmail = email.selectEmail;
+
+
         ko.applyBindings(viewmodel);
 
-        var element = document.getElementById('slider');
-        opennwith.setupOpenwith();
-
-        window.mySwipe = new Swipe(element, {
-          startSlide: 0,
-          speed:150,
-          // auto: 3000,
-          draggable: true,
-          autoRestart: false,
-          continuous: false,
-          // disableScroll: true,
-          stopPropagation: true,
-          callback: function(index, element) {},
-          transitionEnd: function(index, element) {}
-        });
         console.log('Received Event: ' + id);
     }
 };
@@ -68,6 +61,7 @@ var app = {
 app.initialize();
 
 
-// cordova plugin add cc.fovea.cordova.openwith --variable ANDROID_MIME_TYPE="application/vnd.ms-excel" --variable IOS_URL_SCHEME=ccfoveaopenwithdemo  --variable IOS_UNIFORM_TYPE_IDENTIFIER=com.microsoft.excel.xls
+// cordova plugin add cc.fovea.cordova.openwith --variable ANDROID_MIME_TYPE="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel.sheet.macroEnabled.12" --variable IOS_URL_SCHEME=ccfoveaopenwithdemo  --variable IOS_UNIFORM_TYPE_IDENTIFIER=com.microsoft.excel.xls
 // cordova plugin add cc.fovea.cordova.openwith --variable ANDROID_MIME_TYPE="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" --variable IOS_URL_SCHEME=ccfoveaopenwithdemo  --variable IOS_UNIFORM_TYPE_IDENTIFIER=com.microsoft.excel.xls
 
+// cordova plugin add cc.fovea.cordova.openwith --variable ANDROID_MIME_TYPE="application/vnd.ms-excel.sheet.macroEnabled.12" --variable EXTRA_MIME_TYPES="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" --variable IOS_URL_SCHEME=ccfoveaopenwithdemo  --variable IOS_UNIFORM_TYPE_IDENTIFIER=com.microsoft.excel.xls
