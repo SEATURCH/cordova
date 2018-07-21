@@ -16,7 +16,14 @@ var viewmodel = new function() {
             return self.scannedList.indexOf(item) == -1 ;
         });
     });
-
+    self.displayList = ko.computed(function(){
+      var diff = self.diffList().sort().map(function(i){ return {val: i, stat: 'unfound'}; });
+      var scan = self.scannedList().sort().map( function(i){ return {
+        val: i,
+        stat: self.importedList().indexOf(i) >= 0? 'scanned':'found'
+      }});
+      return diff.concat(scan);
+    })
     self.diffFiles = ko.observableArray([]);
 };
 

@@ -17,39 +17,26 @@
         <link rel="stylesheet" type="text/css" href="css/index.css">
     </head>
     <body>
-        <script type="text/javascript" src="./bundle.js"></script>
+        <script type="text/javascript" src="./bundle/bundle.js"></script>
 
         <div class="app">
             <div id="slider" class="swipe" data-bind="swipableTabs">
               <div class="swipe-wrap">
                 <div>
-                    <h1>Imported</h1>
+                    <h1>Ids</h1>
                     <input id="ImportFile" type="file" data-bind="event: { change: listFromExcel }" />
-                    <div class="list" data-bind="foreach: importedList">
-                        <h3 data-bind="text:$data"></h3>
+                    <button data-toggle="tooltip" title="Download List" data-bind="click:scanItem">Scan</button>
+                     <div>
+                        Save current 'Diff' list
+                        <input type="button" data-bind="click: exportExcel" value="Save Current"/>
                     </div>
-                </div>
-                <div>
-                    <h1>Scanned</h1>
-                    <button data-toggle="tooltip" title="Download List" data-bind="click:scanItem">
-                        Scan
-                    </button>
-                    <div class="list" data-bind="foreach: scannedList">
-                        <h3 data-bind="text:$data"></h3>
-                    </div>
-                </div>
-                <div>
-                    <h1>Diff</h1>
-                    <div class="list" data-bind="foreach: diffList">
-                        <h3 data-bind="text:$data"></h3>
+                    <div class="list" data-bind="foreach: displayList">
+                        <h3 data-bind="text:$data.val, css: $data.stat"></h3>
                     </div>
                 </div>
                 <div>
                     <h1>Diff Files</h1>
-                    <div>
-                        Save current 'Diff' list
-                        <input type="button" data-bind="click: exportExcel" value="Save Current"/>
-                    </div>
+                   
                     <input type="button" data-bind="click: selectEmail" value="Email"/>
                     <div class="list" data-bind="foreach: diffFiles">
                         <h3 data-bind="text:$data.name"></h3>
